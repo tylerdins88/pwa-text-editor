@@ -24,8 +24,12 @@ warmStrategyCache({
   strategy: pageCache,
 });
 
+offlineFallback({
+  pageFallback: "/index.html"
+})
+
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
-x
+
 registerRoute(
   // Here we define the callback function that will filter the requests we want to cache (in this case, JS and CSS files)
   ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
